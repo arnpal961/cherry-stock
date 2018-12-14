@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <input type="text" value="10" name="Number of Stocks"/>
+        <div id="wrap-button">
+            <button id="dispaly-stocks">Display</button>
+        </div>
+        <div id="stock-data">
+            <table>
+                <tr>
+                    {% for field in fields %}
+                    <th>{{field}}</th>
+                    {% endfor %}
+                </tr>
+                {% for num in names %}
+                <tr>
+                    {% for data in stock_data[num] %}
+                    <th>{{data}}</th>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
