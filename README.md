@@ -14,27 +14,6 @@
     `-- index.html
 ```
 
-**External libraries used**
---
-```
-bs4
-requests
-cherrypy
-redis
-jinja2
-```
- **Description of each external libraries**
---
-* `bs4` is BeautifulSoup module for parsing and traversing through html dom.
-
-* `requests` is used for making web requests and fetching html document .
-
-* `cherrypy` is the micro web framework which runs the server.
-
-* `redis` is the python redis client for connecting to **redis** database.
-
-* `jinja2` is the python templating library.
-
 **Explanation of each functions and class in `main.py`**
 --
 * `get_download_url(url)`: It takes the original given `url` as argument fetch the webpage extracts all the links in the page then filters the link referred to **bhav copy zip file**. It returns the download link.
@@ -90,12 +69,3 @@ This function takes three arguments already mentioned above.
 retrieve data from database. Here in this function we also use a **global** client named `conn`.
 
 `search_list` is the `list` object contains the value of `SC_NAME` fields. The `map()` function maps each item of search_list to `get_from_db()` function and returns a `python generator` object. Then use the `list()` function to iterate through each mapping and retrieves the data.
-
-## **Drawbacks and What can be Improved**
-* First of all it only displays the first 10 entries of stock data.
-  
-* The search pattern only search through the start of the string which can be more improved using regular expression and searching through the entire name string.
-* It connects to a local database. A more sophisticated and secure way is creating a **AMAZON ELASTIC SEARCH REDIS DATABASE** or **HEROKU-REDIS database** then connect it through python client.
-* This application is hosted in an **Amazon-ec2** instance. It's better to use **Amazon Elastic Benstalk** or **Heroku App** which is more reliable and secure.
-* Proper methods to be implement to handle *errors and exceptions*.
-* There should be `automatic_refresh` function which handles and refresh the data after every certain period.
